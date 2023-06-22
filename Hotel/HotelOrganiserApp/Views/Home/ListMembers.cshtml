@@ -1,0 +1,88 @@
+﻿@using HotelContracts.ViewModels
+
+@model List<MemberViewModel>
+
+@{
+	ViewData["Title"] = "ListMembers";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/listmembers.css" asp-append-version="true" />
+</head>
+
+<section class="u-clearfix u-section-1" id="sec-e38b">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-layout-cell u-size-48 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1">
+                  <div class="u-table u-table-responsive u-table-1">
+                    <table class="u-table-entity">
+                      <colgroup>
+                        <col width="9.8%" />
+                        <col width="62.9%" />
+                        <col width="27.3%" />
+                      </colgroup>
+                      <thead
+                        class="u-custom-color-1 u-table-header u-table-header-1">
+                        <tr style="height: 31px">
+                          <th class="u-border-1 u-border-grey-50 u-table-cell">
+                            Номер
+                          </th>
+                          <th class="u-border-1 u-border-grey-50 u-table-cell">
+                            ФИО участника
+                          </th>
+                          <th class="u-border-1 u-border-grey-50 u-table-cell">
+                            Гражданство
+                          </th>
+                        </tr>
+                      </thead>
+                        <tbody class="u-table-body">
+                                        @foreach (var item in Model){
+                        <tr style="height: 75px">
+                          <td
+                            class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">
+                                                    @Html.DisplayFor(modelItem => item.Id)
+                          </td>
+                          <td
+                            class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"
+                          >
+                                                    @Html.DisplayFor(modelItem => item.MemberFIO)
+                          </td>
+                          <td
+                            class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"
+                          >
+                                                    @Html.DisplayFor(modelItem => item.Citizenship)
+                          </td>
+                        </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="u-container-style u-layout-cell u-size-12 u-layout-cell-2"
+              >
+                <div class="u-container-layout u-container-layout-2">
+                  <a
+                    asp-area="" asp-controller="Home" asp-action="CreateMember"
+                    class="u-active-custom-color-6 u-border-none u-btn u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-1"
+                    >Добавить</a>
+                  <a
+                    asp-area="" asp-controller="Home" asp-action="UpdateMember"
+                    class="u-active-custom-color-6 u-border-none u-btn u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-2"
+                    >иЗМЕНИТЬ</a>
+                  <a
+                    asp-area="" asp-controller="Home" asp-action="DeleteMember"
+                    class="u-active-custom-color-6 u-border-none u-btn u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-3"
+                    >Удалить</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+

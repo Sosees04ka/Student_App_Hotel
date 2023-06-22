@@ -1,0 +1,67 @@
+﻿@using HotelContracts.ViewModels;
+@using HotelDataModels.Models;
+
+@{
+	ViewData["Title"] = "UpdateMember";
+}
+
+<head>
+	<link rel="stylesheet" href="~/css/createmember.css" asp-append-version="true" />
+</head>
+
+<form method="post">
+	<div class="u-form-group u-form-name u-label-top">
+		<label class="u-label u-text-custom-color-1 u-label-1">Участник: </label>
+		<div class="u-input u-input-rectangle">
+			<select id="member" name="member" class="form-control" asp-items="@(new SelectList(@ViewBag.Members, "Id", "MemberFIO"))"></select>
+		</div>
+	</div>
+	<div class="u-form-group u-form-name u-label-top">
+							<label class="u-label u-text-custom-color-1 u-label-1">ФИО участника</label>
+							<input
+                              type="text"
+							  id="fio"
+                              placeholder="Введите ФИО участника"
+                              name="fio"
+                              class="u-input u-input-rectangle"/>
+						  </div>
+	<div class="u-form-email u-form-group u-label-top">
+							<label class="u-label u-text-custom-color-1 u-label-2">Гражданство</label>
+							<input
+                              type="text"
+							  id="citizenship"
+                              placeholder="Введите гражданство участника"
+                              name="citizenship"
+                              class="u-input u-input-rectangle"/>
+						  </div>
+
+	<div class="u-align-right u-form-group u-form-submit u-label-top">
+		<div class="col-8"></div>
+		<div class="col-4"><input type="submit" value="Сохранить" class="u-active-custom-color-6 u-border-none u-btn u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-1" /></div>
+	</div>
+</form>
+
+
+@section Scripts
+	{
+		<script>
+			function check() {
+					var member = $('#member').val();
+					if (member) {
+					$.ajax({
+						method: "GET",
+						url: "/Home/GetMember",
+								data: { memberId: member },
+						success: function (result) {
+							$('#fio').val(result.memberFIO);
+							$('#citizenship').val(result.citizenship);
+						}
+					});
+				};
+			}
+			check();
+					$('#member').on('change', function () {
+					check();
+			});
+		</script>
+}

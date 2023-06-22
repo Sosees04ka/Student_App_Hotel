@@ -1,0 +1,112 @@
+﻿@using HotelContracts.ViewModels;
+@using HotelDataModels.Models;
+
+@{
+	ViewData["Title"] = "UpdateMealPlan";
+}
+
+<head>
+	<link rel="stylesheet" href="~/css/createmember.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/updateconference.css" asp-append-version="true" />
+</head>
+
+<form method="post">
+	<div class="u-form-group u-form-name u-label-top">
+		<label class="u-label u-text-custom-color-1 u-label-1">План питания: </label>
+		<div class="u-input u-input-rectangle">
+			<select id="mealPlan" name="mealPlan" class="form-control" asp-items="@(new SelectList(@ViewBag.MealPlans, "Id", "MealPlanName"))"></select>
+		</div>
+	</div>
+	<div class="u-form-group u-form-name u-label-top">
+							<label class="u-label u-text-custom-color-1 u-label-1">Название плана питания</label>
+							<input
+                              type="text"
+							  id="mealPlanName"
+                              placeholder="Введите название плана питания"
+                              name="mealPlanName"
+                              class="u-input u-input-rectangle"/>
+						  </div>
+	<div class="u-form-email u-form-group u-label-top">
+							<label class="u-label u-text-custom-color-1 u-label-2">Стоимость</label>
+							<input
+                              type="number"
+							  id="mealPlanPrice"
+                              placeholder="Введите стоимость плана питания"
+                              name="mealPlanPrice"
+                              class="u-input u-input-rectangle"/>
+						  </div>
+						  <div class="u-table u-table-responsive u-table-1">
+							  <label class="u-label u-text-custom-color-1 u-label-1">Участники плана питания</label>
+						  <table class="u-table-entity">
+							  <colgroup>
+						<col width="63%" />
+						<col width="37%" />
+					  </colgroup>
+		<thead class="u-custom-color-1 u-table-header u-table-header-1">
+			<tr style="height: 44px">
+				<th class="u-border-1 u-border-black u-table-cell">
+					Участники
+				</th>
+				<th class="u-border-1 u-border-black u-table-cell">
+					Гражданство
+				</th>
+			</tr>
+		</thead>
+		<tbody class="u-table-body" id="table-elements">
+
+		</tbody>
+	</table>
+	</div>
+	<div class="u-table u-table-responsive u-table-1">
+	<label class="u-label u-text-custom-color-1 u-label-1">Комнаты, связанные с планом питания</label>
+						  <table class="u-table-entity">
+							  <colgroup>
+						<col width="63%" />
+						<col width="37%" />
+					  </colgroup>
+		<thead class="u-custom-color-1 u-table-header u-table-header-1">
+			<tr style="height: 44px">
+				<th class="u-border-1 u-border-black u-table-cell">
+					Номер комнаты
+				</th>
+				<th class="u-border-1 u-border-black u-table-cell">
+					Номер корпуса
+				</th>
+			</tr>
+		</thead>
+		<tbody class="u-table-body" id="table-elements-rooms">
+
+		</tbody>
+	</table>
+	</div>
+	<div class="u-align-right u-form-group u-form-submit u-label-top">
+		<div class="col-8"></div>
+		<div class="col-4"><input type="submit" value="Сохранить" class="u-active-custom-color-6 u-border-none u-btn u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-1" /></div>
+	</div>
+</form>
+
+@section Scripts
+	{
+			<script>
+				function check() {
+								var mealPlan = $('#mealPlan').val();
+								if (mealPlan) {
+						$.ajax({
+							method: "GET",
+								url: "/Home/GetMealPlan",
+													data: { mealPlanId: mealPlan },
+							success: function (result) {
+											$('#mealPlanName').val(result.item1.mealPlanName);
+										$('#mealPlanPrice').val(result.item1.mealPlanPrice);
+								$('#table-elements').html(result.item2);
+										$('#table-elements-rooms').html(result.item3);
+							}
+						});
+					};
+				}
+				check();
+							$('#mealPlan').on('change', function () {
+						check();
+				});
+			</script>
+}

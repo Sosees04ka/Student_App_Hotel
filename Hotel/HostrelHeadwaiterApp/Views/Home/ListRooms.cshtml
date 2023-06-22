@@ -1,0 +1,95 @@
+﻿﻿@using HotelContracts.ViewModels
+
+@model List<RoomViewModel>
+
+@{
+    ViewData["Title"] = "ListRooms";
+}
+
+<section class="u-clearfix u-section-1" id="sec-e38b">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div
+                class="u-container-style u-layout-cell u-size-48 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1">
+                  <div class="u-table u-table-responsive u-table-1">
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr style="height: 31px">
+                          <th class="u-border-1 u-border-grey-50 u-table-cell">
+                            Номер
+                          </th>
+                          <th class="u-border-1 u-border-grey-50 u-table-cell">
+                            Корпус
+                          </th>
+                          <th class="u-border-1 u-border-grey-50 u-table-cell">
+                            Название
+                          </th>
+                            <th class="u-border-1 u-border-grey-50 u-table-cell">
+                            Цена
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="u-table-body">
+                                        @foreach (var item in Model)
+                                        {
+                                <tr style="height: 75px">
+                                  <td
+                            class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">
+                                                    @Html.DisplayFor(modelItem => item.Id)
+                                  </td>
+                                  <td
+                            class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"
+                          >
+                                                    @Html.DisplayFor(modelItem => item.RoomFrame)
+                                  </td>
+                                  <td
+                            class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"
+                          >
+                                                    @Html.DisplayFor(modelItem => item.RoomName)
+                                  </td>
+                                    <td
+                            class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"
+                          >
+                                                    @Html.DisplayFor(modelItem => item.RoomPrice)
+                                  </td>
+                                </tr>
+                                        }
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="u-container-style u-layout-cell u-size-12 u-layout-cell-2"
+              >
+                <div class="u-container-layout u-container-layout-2">
+                  <a
+                    asp-area="" asp-controller="Home" asp-action="CreateRoom"
+                    class="btn btn-outline-dark text-center d-flex justify-content-md-center"
+                    >Добавить</a>
+                    &nbsp;
+                  <a
+                    asp-area="" asp-controller="Home" asp-action="UpdateRoom"
+                    class="btn btn-outline-dark text-center d-flex justify-content-md-center"
+                    >Изменить</a>
+                    &nbsp;
+                  <a
+                    asp-area="" asp-controller="Home" asp-action="DeleteRoom"
+                    class="btn btn-outline-dark text-center d-flex justify-content-md-center"
+                    >Удалить</a>
+                    &nbsp;
+                    <a
+                    asp-area="" asp-controller="Home" asp-action="AddDinnerToRoom"
+                    style="padding: 10 px"
+                    class="btn btn-outline-dark text-center d-flex justify-content-md-center"
+                    >Добавить обед</a>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

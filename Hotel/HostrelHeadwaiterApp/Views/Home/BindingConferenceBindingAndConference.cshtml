@@ -1,0 +1,21 @@
+﻿@{
+	ViewData["Title"] = "BindingConferenceBindingAndConference";
+}
+
+<div class="text-center">
+	<h2 class="display-4">Привязка брони по конфереции к конференциям</h2>
+</div>
+<form method="post">
+    <label for="validationCustom04" class="form-label">Выбранная бронь по конференции</label>
+    <select class="form-select" id="validationCustom04" required>
+        <option selected disabled value="">Сделайте выбор</option>
+        <option>Данные из бд*</option>
+    </select>
+    <label for="validationCustom04" class="form-label">Выбранная конференция</label>
+    <select class="form-select" id="validationCustom04" required>
+        <option selected disabled value="">Сделайте выбор</option>
+        <option>Данные из бд*</option>
+    </select>
+    <button type="button" class="btn btn-lg btn-primary" disabled>Привязать</button>
+    <button type="button" class="btn btn-secondary btn-lg" disabled>Отмена</button>
+</form>

@@ -1,0 +1,41 @@
+﻿@{
+	ViewData["Title"] = "Enter";
+}
+<head>
+    <link rel="stylesheet" href="~/css/entry.css" asp-append-version="true" />
+</head>
+<div class="text-center">
+	 <h2
+                    class="u-text u-text-custom-color-1 u-text-default u-text-1"
+                  >
+                    Вход
+                  </h2>
+</div>
+<form method="post">
+  <div class="container d-flex justify-content-center align-items-center">
+      <div class="card-body">
+        <div class="form-group">
+          <label class="u-label u-text-custom-color-1 u-label-1">Электронная почта</label>
+          <input
+            type="text"
+            placeholder="Введите свой логин"
+                           name="login"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label class="u-label u-text-custom-color-1 u-label-2">Пароль</label>
+          <input
+            type="password"
+            placeholder="Введите свой пароль"
+            name="password"
+            class="form-control"
+          />
+        </div>
+        <br>
+        <div class="form-group text-center" style="padding-bottom: 120px;">
+          <button type="submit" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Войти</button>
+        </div>
+      </div>
+  </div>
+</form>

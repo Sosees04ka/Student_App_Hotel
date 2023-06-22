@@ -1,0 +1,92 @@
+﻿﻿@using HotelContracts.ViewModels;
+@using HotelDataModels.Models;
+
+@{
+	ViewData["Title"] = "UpdateRoom";
+}
+
+
+<form method="post">
+ <div class="container d-flex justify-content-center align-items-center">
+      <div class="card-body">
+        <div class="form-group">
+          <label class="u-label u-text-custom-color-1 u-label-1">Комнаты: </label>
+         <select id="room" name="room" class="form-control" asp-items="@(new SelectList(@ViewBag.Rooms, "Id", "RoomName"))"></select>
+		</div>
+	<div class="form-group">
+							<label class="u-label u-text-custom-color-1 u-label-1">Название комнаты</label>
+							<input
+                              type="text"
+							  id="roomName"
+                              placeholder="Введите название конференции"
+                              name="roomName"
+                              class="form-control"/>
+						  </div>
+	<div class="form-group">
+							<label class="u-label u-text-custom-color-1 u-label-2">Цена комнаты</label>
+							<input
+                              type="number"
+							  id="roomPrice"
+                              placeholder="Выберите начало конференции"
+                              name="roomPrice"
+                              class="form-control"/>
+						  </div>
+						  	<div class="form-group">
+							<label class="u-label u-text-custom-color-1 u-label-1">Корпус</label>
+							<input
+                              type="text"
+							  id="roomFrame"
+                              placeholder="Введите название конференции"
+                              name="roomFrame"
+                              class="form-control"/>
+						  </div>
+						  <div class="u-table u-table-responsive u-table-1">
+							  <label class="u-label u-text-custom-color-1 u-label-1">Обеды для номеров</label>
+						  <table class="table">
+		<thead class="thead-dark">
+			<tr style="height: 44px">
+				<th class="u-border-1 u-border-grey-50 u-table-cell">
+					Обед
+				</th>
+				<th class="u-border-1 u-border-grey-50 u-table-cell">
+					Цена
+				</th>
+			</tr>
+		</thead>
+		<tbody class="u-table-body" id="table-elements">
+
+		</tbody>
+	</table>
+	</div>
+			<br>
+      <div class="u-container-layout u-container-layout-2">
+        <input type="submit" value="Сохранить" class="btn btn-outline-dark text-center d-flex justify-content-md-center" />
+      </div>
+	</div>
+	</div>
+</form>
+
+@section Scripts
+	{
+			<script>
+				function check() {
+							var room = $('#room').val();
+							if (room) {
+						$.ajax({
+							method: "GET",
+								url: "/Home/GetRoom",
+											data: { roomId: room },
+							success: function (result) {
+									$('#roomName').val(result.item1.roomName);
+								$('#startDate').val(result.item1.startDate);
+								$('#table-elements').html(result.item2);
+							}
+						});
+					};
+				}
+				check();
+						$('#room').on('change', function () {
+						check();
+				});
+			</script>
+}

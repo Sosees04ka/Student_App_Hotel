@@ -1,0 +1,30 @@
+﻿@{
+	ViewData["Title"] = "CreateMember";
+}
+
+<form method="post">
+      <div class="form-group">
+        <label class="u-label u-text-custom-color-1 u-label-1">Название обеда</label>
+      </div>
+              <input
+          type="text"
+          placeholder="Введите название обеда"
+          name="dinnerName"
+          class="form-control"
+        />
+      <br>
+      <div class="form-group">
+        <label class="u-label u-text-custom-color-1 u-label-2">Стоимость обеда</label>
+      </div>
+              <input
+          type="number"
+          placeholder="Введите стоимость обеда"
+          name="dinnerPrice"
+          class="form-control"
+          step="1"
+        />
+      <br>
+      <div class="u-container-layout u-container-layout-2">
+        <input type="submit" value="Сохранить" class="btn btn-outline-dark text-center d-flex justify-content-md-center" />
+      </div>
+</form>

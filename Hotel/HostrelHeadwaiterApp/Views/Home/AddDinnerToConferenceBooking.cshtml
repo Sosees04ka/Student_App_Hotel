@@ -1,0 +1,52 @@
+﻿﻿@using HotelContracts.ViewModels;
+@using HotelDataModels.Models;
+
+@{
+	ViewData["Title"] = "AddDinnerToConferenceBooking";
+}
+@model Tuple<List<ConferenceBookingViewModel>, List<DinnerViewModel>>
+
+<div class="container">
+    <h2>Добавление обедов в бронирование конференции</h2>
+    <form method="post">
+        <div class="form-group">
+            <label for="conferenceBooking">План питания:</label>
+            <select id="conferenceBooking" name="conferenceBooking" class="form-control">
+                @foreach (var conferenceBooking in Model.Item1)
+                {
+                    <option value="@conferenceBooking.Id">@Html.DisplayFor(modelItem => conferenceBooking.NameHall)</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Обеды для бронирования:</label>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Обед</th>
+                            <th>Цена</th>
+                        </
+<tbody>
+                        @foreach (var item in Model.Item2)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="dinner[]" value="@item.Id">
+                                    </div>
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.DinnerName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DinnerPrice)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+           <br>
+      <div class="u-container-layout u-container-layout-2">
+        <input type="submit" value="Добавить" class="btn btn-outline-dark text-center d-flex justify-content-md-center" />
+      </div>
+    </form>
+</div>

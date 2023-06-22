@@ -1,0 +1,75 @@
+﻿﻿@using HotelContracts.ViewModels
+
+@{
+    ViewData["Title"] = "ListMembersToPdfFile";
+}
+<head>
+    <link rel="stylesheet" href="~/css/createmember.css" asp-append-version="true" />
+</head>
+<div class="text-center">
+    <h2 class="u-text u-text-custom-color-1 u-text-default u-text-1"> Отчет по участникам за период </h2>
+</div>
+
+<div class="text-center">
+    @{
+            <form method="post">
+                <div class="u-form-email u-form-group u-label-top">
+                                    <label class="u-label u-text-custom-color-1 u-label-2" for="dateFrom">Начало периода</label>
+                                <input
+                                  type="datetime-local"
+                                  placeholder="Выберите дату начала периода"
+                                      id="dateFrom" name="dateFrom"
+                                  class="u-input u-input-rectangle"/>
+                              </div>
+                                  <div class="u-form-email u-form-group u-label-top">
+                                     <label class="u-label u-text-custom-color-1 u-label-2" for="dateTo">Окончание периода</label>
+                                    <input
+                                      type="datetime-local"
+                                      placeholder="Выберите дату окончания периода"
+                                      id="dateTo" name="dateTo"
+                                      class="u-input u-input-rectangle"/>
+                                  </div>
+                                <div class="u-form-group u-form-name u-label-top">
+                                <label class="u-label u-text-custom-color-1 u-label-1">Введите почту</label>
+                                <input
+                                  type="email"
+                                  placeholder="Введите вашу почту"
+                                      name="organiserEmail"
+                                  class="u-input u-input-rectangle"/>
+                              </div>
+                                  <div class="u-align-right u-form-group u-form-submit u-label-top">
+            <div class="col-8"></div>
+                <div class="col-4"><input type="submit" value="Отправить на почту" class="u-active-custom-color-6 u-border-none u-btn u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-1" /></div>
+        </div>
+                <div class="mt-3" id="report">
+                </div>
+            </form>
+                <div class="u-align-right u-form-group u-form-submit u-label-top">
+                <div class="col-8"></div>
+                                        <div class="col-4"><button type="button" id="demonstrate" class="u-active-custom-color-6 u-border-none u-btn u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-2 u-btn-1">Продемонстрировать</button></div>
+            </div>
+    }
+</div>
+
+@section Scripts {
+        <script>
+            function check() {
+                var dateFrom = $('#dateFrom').val();
+                var dateTo = $('#dateTo').val();
+                if (dateFrom && dateTo) {
+                    $.ajax({
+                        method: "GET",
+                        url: "/Home/GetMembersReport",
+                        data: { dateFrom: dateFrom, dateTo: dateTo },
+                        success: function (result) {
+                            if (result != null) {
+                                $('#report').html(result);
+                            }
+                        }
+                    });
+                };
+            }
+            check();
+                $('#demonstrate').on('click', (e) => check());
+        </script>
+}

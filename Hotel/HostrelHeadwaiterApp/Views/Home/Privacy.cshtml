@@ -1,0 +1,73 @@
+﻿﻿@using HotelContracts.ViewModels
+
+@model HeadwaiterViewModel
+
+@{
+	ViewData["Title"] = "Privacy";
+}
+<div class="text-center">
+    <h2 class="u-text u-text-custom-color-1 u-text-default u-text-1"> Мои данные </h2>
+</div>
+<form method="post">
+  <div class="container d-flex justify-content-center align-items-center">
+      <div class="card-body">
+          <div class="form-group">
+                        <label class="u-label u-text-custom-color-1 u-label-1">Логин</label>
+                        <input
+                          type="text"
+                          placeholder="Введите логин"
+                          name="login"
+                          value="@Model.HeadwaiterLogin"
+                          class="form-control"/>
+                      </div>
+                       <div class="form-group">
+                      <div class="u-form-email u-form-group u-label-top">
+                        <label class="u-label u-text-custom-color-1 u-label-2">Электронная почта</label>
+                        <input
+                          type="email"
+                          placeholder="Введите электронную почту"
+                          name="email"
+                          value="@Model.HeadwaiterEmail"
+                          class="form-control"/>
+                      </div>
+                       </div>
+                       <div class="form-group">
+    <div class="u-form-group u-label-top u-form-group-3">
+                        <label class="u-label u-text-custom-color-1 u-label-3">ФИО</label>
+                        <input
+                          type="text"
+                          placeholder="Введите ФИО"
+                          name="fio"
+                          value="@Model.HeadwaiterFIO"
+                          class="form-control"/>
+                      </div>
+                      </div>
+                       <div class="form-group">
+                      <div class="u-form-group u-label-top u-form-group-4">
+                        <label class="u-label u-text-custom-color-1 u-label-4">Номер телефона</label>
+                        <input
+                          type="text"
+                          name="telephone"
+                          class="form-control"
+                          value="@Model.HeadwaiterNumber"
+                          placeholder="Введите номер телефона"/>
+                      </div>
+                       </div>
+                       <div class="form-group">
+                      <div class="u-form-group u-label-top u-form-group-5">
+                        <label class="u-label u-text-custom-color-1 u-label-5">Пароль</label>
+                        <input
+                          type="text"
+                          placeholder="Введите пароль"
+                          name="password"
+                          value="@Model.HeadwaiterPassword"
+                          class="form-control"/>
+                      </div>
+                       </div>
+         <br>
+          <div class="u-container-layout u-container-layout-2">
+            <input type="submit" value="Изменить" class="btn btn-outline-dark text-center d-flex justify-content-md-center" />
+          </div>
+      </div>
+      </div>
+</form>

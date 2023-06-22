@@ -1,0 +1,68 @@
+﻿﻿@using HotelContracts.ViewModels;
+@using HotelDataModels.Models;
+
+@{
+	ViewData["Title"] = "UpdateDinner";
+}
+
+
+<form method="post">
+  <div class="container d-flex justify-content-center align-items-center">
+      <div class="card-body">
+        <div class="form-group">
+          <label class="u-label u-text-custom-color-1 u-label-1">Обеды: </label>
+          <select id="dinner" name="dinner" class="form-control" asp-items="@(new SelectList(@ViewBag.Dinners, "Id", "DinnerName"))"></select>
+        </div>
+        <div class="form-group">
+          <label class="u-label u-text-custom-color-1 u-label-1">Название обеда</label>
+          <input
+            type="text"
+            id="dinnerName"
+            placeholder="Введите название обеда"
+            name="dinnerName"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label class="u-label u-text-custom-color-1 u-label-2">Стоимость обеда</label>
+          <input
+            type="number"
+            id="dinnerPrice"
+            placeholder="Введите стоимость обеда"
+            name="dinnerPrice"
+            class="form-control"
+            step="1"
+          />
+        </div>
+         <br>
+          <div class="u-container-layout u-container-layout-2">
+            <input type="submit" value="Сохранить" class="btn btn-outline-dark text-center d-flex justify-content-md-center" />
+          </div>
+      </div>
+  </div>
+</form>
+
+
+@section Scripts
+	{
+		<script>
+			function check() {
+					var dinner = $('#dinner').val();
+					if (dinner) {
+					$.ajax({
+						method: "GET",
+						url: "/Home/GetDinner",
+								data: { dinnerId: dinner },
+						success: function (result) {
+							$('#dinnerName').val(result.DinnerName);
+							$('#dinnerPrice').val(result.DinnerPrice);
+						}
+					});
+				};
+			}
+			check();
+					$('#dinner').on('change', function () {
+					check();
+			});
+		</script>
+}

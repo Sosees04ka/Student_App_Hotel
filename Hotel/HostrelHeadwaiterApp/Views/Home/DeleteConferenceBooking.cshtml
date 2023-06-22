@@ -1,0 +1,18 @@
+﻿@{
+	ViewData["Title"] = "DeleteConferenceBooking";
+}
+
+<form method="post">
+  <div class="container d-flex justify-content-center align-items-center0">
+      <div class="card-body">
+        <div class="form-group">
+          <label class="u-label u-text-custom-color-1 u-label-1">Бронирование: </label>
+			<select id="conferenceBooking" name="conferenceBooking" class="form-control" asp-items="@(new SelectList(@ViewBag.ConferenceBookings, "Id", "NameHall"))"></select>
+	     </div>
+     <br>
+      <div class="u-container-layout u-container-layout-2">
+        <input type="submit" value="Сохранить" class="btn btn-outline-dark text-center d-flex justify-content-md-center" />
+      </div>
+    </div>
+  </div>
+</form>

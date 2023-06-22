@@ -1,0 +1,58 @@
+﻿@using HotelContracts.ViewModels
+
+
+@model List<DinnerViewModel>
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Card</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-size: cover;
+      background-position: center center;
+      height: 100vh;
+    }
+    .card {
+      margin: 100px auto;
+      width: 50%;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+    }
+    .card-header {
+      border-radius: 10px 10px 0 0;
+      background-color: #343A40;
+      color: #fff;
+      border: 0;
+    }
+    .card-title {
+      font-weight: bold;
+    }
+    .card-text {
+      font-size: 1.25rem;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body class="bg-image">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Отель</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Создатель Кашин Максим и Жимолостнова Анна</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

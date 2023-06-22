@@ -1,0 +1,73 @@
+﻿@using HotelContracts.ViewModels
+
+@model List<DinnerViewModel>
+
+@{
+    ViewData["Title"] = "ListDinnerRoomToFile";
+}
+
+<div class="text-center">
+  <div class="title">
+    <h2>Создание отчета по обедам</h2>
+  </div>
+</div>
+
+<div class="text-center">
+  <form method="post">
+    <div class="file-format">
+        <label class="form-label">Выберите формат файла:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="type" value="docx" id="docx">
+          <label class="form-check-label" for="docx">Word-файл</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="type" value="xlsx" id="xlsx" checked>
+          <label class="form-check-label" for="xlsx">Excel-файл</label>
+        </div>
+    </div>
+    <div class="table">
+      <table class="table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Обед</th>
+            <th scope="col">Цена</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+              <tr>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Ids[]" value="@item.Id" id="@item.Id">
+                  </div>
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.DinnerName)</td>
+                <td>@Html.DisplayFor(modelItem => item.DinnerPrice)</td>
+              </tr>
+            }
+        </tbody>
+      </table>
+    </div>
+        <br>
+<div class="d-flex justify-content-center">
+  <button type="submit" class="btn btn-block btn-outline-dark w-100">Создать</button>
+</div>
+  </form>
+</div>
+
+<style>
+  .title {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .file-format {
+    margin-bottom: 30px;
+  }
+  
+  .table {
+    margin-bottom: 30px;
+  }
+</style> 
